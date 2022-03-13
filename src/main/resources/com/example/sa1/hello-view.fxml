@@ -29,7 +29,7 @@
       <TextField fx:id="extraDetF" layoutX="317.0" layoutY="683.0" visible="false" />
       <Label fx:id="extraDetL" layoutX="343.0" layoutY="657.0" prefHeight="18.0" prefWidth="100.0" text="Extra Details" visible="false" />
       <Button fx:id="addB" layoutX="176.0" layoutY="736.0" mnemonicParsing="false" onAction="#addVacation" prefHeight="25.0" prefWidth="100.0" text="Add Package" visible="false" />
-      <Button fx:id="modifyB" layoutX="342.0" layoutY="740.0" mnemonicParsing="false" onAction="#modifyVacation" prefHeight="25.0" prefWidth="100.0" text="Modify" />
+      <Button fx:id="modifyB" layoutX="342.0" layoutY="740.0" mnemonicParsing="false" onAction="#modifyVacation" prefHeight="25.0" prefWidth="100.0" text="Modify" visible="false" />
       <Button fx:id="deleteB" layoutX="531.0" layoutY="740.0" mnemonicParsing="false" onAction="#deleteVacation" prefHeight="25.0" prefWidth="100.0" text="Delete" visible="false" />
       <Button fx:id="destB" layoutX="35.0" layoutY="736.0" mnemonicParsing="false" onAction="#addDestination" prefHeight="25.0" prefWidth="110.0" text="Add Destination" visible="false" />
       <Button fx:id="deleteDB" layoutX="654.0" layoutY="740.0" mnemonicParsing="false" onAction="#deleteDestination" prefHeight="25.0" prefWidth="111.0" text="Delete Destinaiton" visible="false" />
