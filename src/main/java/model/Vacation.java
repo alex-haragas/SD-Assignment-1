@@ -29,7 +29,7 @@ public class Vacation {
     private String extraDetails;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "vacation_id")
     private Destination destination;
 

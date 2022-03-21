@@ -17,8 +17,7 @@ public class VacationController {
     public Vacation addVacation(String name, Destination d,String extraDetails,String period,double price,String limit){
         if(vs.findByName(name)==null){
             dateChecker dc=new dateChecker();
-            if(dc.validDate(period.substring(0,9)) && dc.validDate(period.substring(11))
-                   && dc.compDate(period.substring(0,9),period.substring(11)) && price>0 && Integer.parseInt(limit)>0){
+            if(dc.compDate(period.substring(0,9),period.substring(11)) && price>0 && Integer.parseInt(limit)>0){
                 Vacation v=new Vacation(name,limit,price,period,extraDetails,d);
                 if(insertVacation(v))
                     return v;

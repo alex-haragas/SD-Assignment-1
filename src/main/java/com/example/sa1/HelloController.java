@@ -9,6 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Destination;
 import model.User;
 import model.Vacation;
+import service.VacationService;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -319,7 +320,7 @@ public class HelloController {
             }
             String date1,date2;
             if(startDateF.getText().equals("")){
-                date1="00.00.0000";
+                date1="01.01.2022";
             }
             else{
                 date1=startDateF.getText();
@@ -340,8 +341,7 @@ public class HelloController {
             dateChecker dc=new dateChecker();
             for(Vacation v:vacations){
                 if(v.getPrice()>=minPrice && v.getPrice()<=maxPrice){
-                    if(dc.validDate(date1) && dc.validDate(date2) &&
-                            dc.compDate(date1,v.getPeriod().substring(0,9)) && dc.compDate(date2,v.getPeriod().substring(11))){
+                    if(dc.compDate(date1,v.getPeriod().substring(0,9)) && dc.compDate(v.getPeriod().substring(11),date2)){
                         if(!checkDest || v.getDestination().getName().equals(destF.getText())){
                             if(!bookedCheck.isSelected() || v.getUsers().contains(loggedUser)){
                                 if (!v.getStatus().equals("BOOKED") || v.getUsers().contains(loggedUser)) {
@@ -349,6 +349,9 @@ public class HelloController {
                                 }
                             }
                         }
+                    }
+                    else{
+                        System.out.println("date");
                     }
                 }
             }
@@ -392,6 +395,8 @@ public class HelloController {
                 else {
                     Vacation newV = vc.addVacation(name, d,exData,period,realPrice,limit);
                     vacations.add(newV);
+                    VacationService vs=new VacationService(em);
+                    vs.addVacation(newV);
                     showMessage("Success",name+ " was added.");
 
                     agencyPage();
@@ -461,8 +466,7 @@ public class HelloController {
                     }
                     if(!period.equals("")){
                         dateChecker dateChecker=new dateChecker();
-                        if(dateChecker.validDate(period.substring(0,9)) && dateChecker.validDate(period.substring(11))
-                               && dateChecker.compDate(period.substring(0,9),period.substring(11)) ){
+                        if(dateChecker.compDate(period.substring(0,9),period.substring(11)) ){
                            v.setPeriod(period);
                         }
                         else{

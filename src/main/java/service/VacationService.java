@@ -14,18 +14,16 @@ public class VacationService {
         this.vr=new VacationRepository(em);
     }
     public boolean addVacation(Vacation v){
-        int c=0;
         try{
             vr.findByName(v.getName());
-        }
-        catch (Exception e){
-            c++;
-        }
-        if(c!=1){
+            System.out.println("1");
             return false;
         }
-        vr.addVacation(v);
-        return true;
+        catch (Exception e){
+            vr.addVacation(v);
+            System.out.println("2");
+            return true;
+        }
     }
     public Vacation findByName(String name){
         try {
